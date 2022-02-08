@@ -6,7 +6,7 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 12:06:17 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/08 12:08:53 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:18:08 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ char	*ft_strlowcase(char *str)
 	int	cont;
 
 	cont = 0;
-	while(*str != '\0')
+	while (*str != '\0')
 	{
 		if (*str >= 'A' && *str <= 'Z')
 			*str = *str + 32;

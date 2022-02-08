@@ -6,7 +6,7 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 10:49:51 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/08 12:01:38 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:10:07 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@ int	ft_str_is_printable(char *str)
 {
 	while (*str != '\0')
 	{
-		if( *str <  32)
+		if (*str < 32)
 			return (0);
 		str++;
 	}

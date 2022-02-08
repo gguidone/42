@@ -6,7 +6,7 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 14:22:44 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/08 14:34:32 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:22:43 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,36 @@ void	print(char c)
 
 void	split(char c)
 {
-	if ( c < 10)
+	if (c < 10)
 		print(c + 48);
 	else if (c < 16)
-		print(c + 87);		
+		print(c + 87);
 }
+
 void	convert(char c)
-{
-	if ( c < 10)
+{	
+	char	a;
+	char	b;
+
+	if (c < 10)
 	{
 		print('0');
 		print(c + 48);
 	}
-	else if ( c < 16 )
+	else if (c < 16)
 	{
 		print('0');
 		print(c + 87);
 	}
 	else
-	{	
-		char	a;
-		char	b;
-
+	{
 		a = c / 16;
 		b = c % 16;
 		if (a != 0)
 		{
 			a = a % 16;
 			split(a);
-			split(b);	
+			split(b);
 		}
 	}
 }
@@ -61,13 +62,8 @@ void	ft_putstr_non_printable(char *str)
 			print('\\');
 			convert(*str);
 		}
-		else 
+		else
 			print(*str);
 		str++;
 	}
-}
-int main()
-{
-	ft_putstr_non_printable("Coucou\ntu vas bien ?");
-	return 0;
 }

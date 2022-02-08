@@ -6,20 +6,20 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:31:49 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/08 09:36:34 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:04:38 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	char *temp;
+	char	*temp;
 
 	temp = dest;
-	while(*src != '\0')
+	while (*src != '\0' )
 	{
 		*dest = *src;
 		dest++;
 		src++;
 	}
-	return temp;
+	return (temp);
 }

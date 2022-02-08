@@ -6,13 +6,13 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:42:11 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/08 09:47:07 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:07:34 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_str_is_alpha(char *str)
 {
-	while( *str != '\0')
+	while (*str != '\0')
 	{
 		if (*str < 65 || (*str > 90 && *str < 97) || *str > 122)
 			return (0);
@@ -20,4 +20,3 @@ int	ft_str_is_alpha(char *str)
 	}
 	return (1);
 }
-

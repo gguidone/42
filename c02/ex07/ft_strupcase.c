@@ -6,7 +6,7 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 12:02:35 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/08 12:09:27 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/08 19:17:05 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strupcase(char *str)
 	cont = 0;
 	while (*str != '\0')
 	{
-		if ( *str >=  'a' && *str <= 'z')
+		if (*str >= 'a' && *str <= 'z')
 			*str = *str - 32;
 		str++;
 		cont++;
