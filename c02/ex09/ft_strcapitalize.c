@@ -17,13 +17,12 @@ char	*ft_strcapitalize(char *str)
 	cont = 0;
 	while (*str != '\0')
 	{
-		if (cont = 0 && *str >= 'a' && *str <= 'z')
+		if (cont == 0 && *str >= 'a' && *str <= 'z')
 			*str = *str - 32;
 		else if (*str >= 'A' && *str <= 'Z')
-			*str = *str = 32;
+			*str = *str + 32;
 		cont++;
 		str++;
 	}
-	str = str - cont;
 	return (str);
 }

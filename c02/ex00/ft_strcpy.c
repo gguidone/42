@@ -15,7 +15,11 @@ char	*ft_strcpy(char *dest, char *src)
 	char *temp;
 
 	temp = dest;
-	while(*src++ != '\0')
-		*dest++ = *src++;
+	while(*src != '\0')
+	{
+		*dest = *src;
+		dest++;
+		src++;
+	}
 	return temp;
 }

@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 char	*ft_strlowcase(char *str)
 {
 	int	cont;
@@ -23,6 +22,5 @@ char	*ft_strlowcase(char *str)
 		cont++;
 		str++;
 	}
-	str = str - cont;
 	return (str);
 }

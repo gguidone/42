@@ -12,6 +12,8 @@
 
 char	*ft_strupcase(char *str)
 {
+	int	cont;
+
 	cont = 0;
 	while (*str != '\0')
 	{
@@ -20,6 +22,5 @@ char	*ft_strupcase(char *str)
 		str++;
 		cont++;
 	}
-	str = str - cont;
 	return (str);
 }

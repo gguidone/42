@@ -12,22 +12,23 @@
 
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	int	cont;
+	unsigned int	cont;
 
 	cont = 0;
-	while (*src != '\0')
+	if (size == 0)
+		*dest = '\0';
+	else 
 	{
-		if (cont < size - 1)
-			*dest = *src;
-		else if(cont == size - 1)
-			*dest = '\0';
-		cont++;
-		src++;
-		dest++;
+		while (*src != '\0')
+		{
+			if (cont < size - 1)
+				*dest = *src;
+			else if(cont == size - 1)
+				*dest = '\0';
+			cont++;
+			src++;
+			dest++;
+		}
 	}
 	return (cont);
 }
-
-
-
-

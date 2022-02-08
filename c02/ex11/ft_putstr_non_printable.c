@@ -12,21 +12,43 @@
 
 #include <unistd.h>
 
-void print(char c)
+void	print(char c)
 {
 	write(1, &c, 1);
 }
 
-char convert(char c)
+void	split(char c)
 {
 	if ( c < 10)
-		return (c + 48);
+		print(c + 48);
+	else if (c < 16)
+		print(c + 87);		
+}
+void	convert(char c)
+{
+	if ( c < 10)
+	{
+		print('0');
+		print(c + 48);
+	}
 	else if ( c < 16 )
-		return (c + 87);
+	{
+		print('0');
+		print(c + 87);
+	}
 	else
 	{	
-		converti(c \ 10);
-		converti(c % 10);
+		char	a;
+		char	b;
+
+		a = c / 16;
+		b = c % 16;
+		if (a != 0)
+		{
+			a = a % 16;
+			split(a);
+			split(b);	
+		}
 	}
 }
 
@@ -37,8 +59,15 @@ void	ft_putstr_non_printable(char *str)
 		if (*str < 32)
 		{
 			print('\\');
-			print(convert(*str));
+			convert(*str);
 		}
+		else 
+			print(*str);
 		str++;
 	}
+}
+int main()
+{
+	ft_putstr_non_printable("Coucou\ntu vas bien ?");
+	return 0;
 }
