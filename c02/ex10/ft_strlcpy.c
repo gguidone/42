@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 09:37:06 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/08 14:33:38 by gguidone         ###   ########.fr       */
+/*   Created: 2022/02/08 13:57:17 by gguidone          #+#    #+#             */
+/*   Updated: 2022/02/08 14:22:20 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strncpy(char *dest, char *src, unsigned int n)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	char *temp;
+	int	cont;
 
-	temp = dest;
-	while(n>0)
+	cont = 0;
+	while (*src != '\0')
 	{
-		if(*src != 0)
-		{
-			*temp = *src;
-			src ++;
-		}
-		temp++;
-		n--;
+		if (cont < size - 1)
+			*dest = *src;
+		else if(cont == size - 1)
+			*dest = '\0';
+		cont++;
+		src++;
+		dest++;
 	}
-	return (temp);
+	return (cont);
 }
+
+
+
 

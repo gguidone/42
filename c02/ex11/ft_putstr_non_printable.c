@@ -1,30 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 09:37:06 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/08 14:33:38 by gguidone         ###   ########.fr       */
+/*   Created: 2022/02/08 14:22:44 by gguidone          #+#    #+#             */
+/*   Updated: 2022/02/08 14:34:32 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	char *temp;
+#include <unistd.h>
 
-	temp = dest;
-	while(n>0)
-	{
-		if(*src != 0)
-		{
-			*temp = *src;
-			src ++;
-		}
-		temp++;
-		n--;
-	}
-	return (temp);
+void print(char c)
+{
+	write(1, &c, 1);
 }
 
+char convert(char c)
+{
+	if ( c < 10)
+		return (c + 48);
+	else if ( c < 16 )
+		return (c + 87);
+	else
+	{	
+		converti(c \ 10);
+		converti(c % 10);
+	}
+}
+
+void	ft_putstr_non_printable(char *str)
+{
+	while (*str != 0)
+	{
+		if (*str < 32)
+		{
+			print('\\');
+			print(convert(*str));
+		}
+		str++;
+	}
+}
