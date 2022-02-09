@@ -6,14 +6,16 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 12:02:35 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/08 19:17:05 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:00:23 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strupcase(char *str)
 {
+	char *temp;
 	int	cont;
 
+	temp = str;
 	cont = 0;
 	while (*str != '\0')
 	{
@@ -22,5 +24,5 @@ char	*ft_strupcase(char *str)
 		str++;
 		cont++;
 	}
-	return (str);
+	return (temp);
 }
