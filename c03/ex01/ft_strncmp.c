@@ -6,20 +6,19 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:30:27 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/09 15:30:29 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/09 18:07:16 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-    while(n)
-    {
-        if(*s1 > *s2)
-            return (1);
-        else if(*s1 < *s2)
-            return (-1);
-        n--;
-    }
-    return (0);
+	while (n)
+	{
+		if (*s1 > *s2)
+			return (1);
+		else if (*s1 < *s2)
+			return (-1);
+		n--;
+	}
+	return (0);
 }
-
