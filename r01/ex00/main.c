@@ -6,7 +6,7 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 12:13:59 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/12 18:42:52 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/12 19:57:57 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,159 @@ int check_error(char **mat, int lato)
 	return (1);
 }
 
+void put_four_row(char **mat, int lato)
+{
+	int	i;
+
+	i = 1;
+	while (i + 1 <  lato)
+	{
+		if (mat[i][0] == 49)
+			mat[i][1] = 52;
+		if (mat[i][lato - 1] == 49)
+			mat[i][lato - 2] = 52;
+		if (mat[0][i] == 49)
+			mat[1][i] = 52;
+		if (mat[lato - 1][i] == 49)
+			mat[lato - 2][i] = 52;
+	   i++;
+	}	   
+}
+
+void put_one_row(char **mat, int lato)
+{
+	int	i;
+	int	j;
+	char num;
+
+	num = 49;
+	j = 1;
+	i = 1;
+	while (i + 1 <  lato)
+	{
+		if (mat[i][0] == 52)
+			while (j + 1 < lato)
+			{
+				mat[i][j] = num;
+				num++;
+				j++;
+				if (num == 53)
+					num = 49;
+			}
+		if (mat[i][lato - 1] == 52)
+			while (j + 1 < lato)
+			{
+				mat[i][j] = num;
+				num++;
+				j++;
+				if (num == 53)
+					num = 49;
+			}	
+		if (mat[0][i] == 52)
+			while (j + 1 < lato)
+			{
+				mat[i][j] = num;
+				num++;
+				j++;
+				if (num == 53)
+					num = 49;
+			}	
+		if (mat[lato - 1][i] == 52)
+			while (j + 1 < lato)
+			{
+				mat[i][j] = num;
+				num++;
+				j++;
+				if (num == 53)
+					num = 49;
+			}   	
+		i++;
+	}	   
+}
+
+void put_four_col(char **mat, int lato)
+{
+	int	i;
+
+	i = 1;
+	while (i + 1 <  lato)
+	{
+		if (mat[0][i] == 49)
+			mat[1][i] = 52;
+		if (mat[lato - 1][i] == 49)
+			mat[lato - 2][i] = 52;
+		if (mat[i][0] == 49)
+			mat[i][1] = 52;
+		if (mat[i][lato - 1] == 49)
+			mat[i][lato - 2] = 52;
+	   i++;
+	}	   
+}
+
+void put_one_col(char **mat, int lato)
+{
+	int	i;
+	int	j;
+	char num;
+
+	num = 49;
+	j = 1;
+	i = 1;
+	while (i + 1 <  lato)
+	{
+		if (mat[0][i] == 52)
+			while (j + 1 < lato)
+			{
+				mat[j][i] = num;
+				num++;
+				j++;
+				if (num == 53)
+					num = 49;
+			}
+		if (mat[lato - 1][i] == 52)
+			while (j + 1 < lato)
+			{
+				mat[j][i] = num;
+				num++;
+				j++;
+				if (num == 53)
+					num = 49;
+			}	
+		if (mat[i][0] == 52)
+			while (j + 1 < lato)
+			{
+				mat[j][i] = num;
+				num++;
+				j++;
+				if (num == 53)
+					num = 49;
+			}	
+		if (mat[i][lato - 1] == 52)
+			while (j + 1 < lato)
+			{
+				mat[j][i] = num;
+				num++;
+				j++;
+				if (num == 53)
+					num = 49;
+			}   	
+		i++;
+	}	   
+}
+
+int check_error_2(char **mat, int lato)
+{
+	if (mat[0][1] == 49 && mat[1][0] != 49)
+		return (0);
+	if (mat[0][lato - 2] == 49 && mat[1][lato - 1] != 49)
+		return (0);
+	if (mat[lato - 2][0] == 49 && mat[lato - 1][1] != 49)
+		return (0);
+	if (mat[lato - 1][lato - 2] == 49 && mat[lato - 2][lato - 1] != 49)
+		return (0);
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	int	flag;
@@ -187,13 +340,16 @@ int	main(int argc, char **argv)
 		   	mat = crea_matrice(mat, 6);
 			riempi_matrice(mat, 6);
 			put_string(mat, str);
-			if (check_error(mat, 6) == 1)
+			if (check_error(mat, 6) == 1 && check_error_2(mat, 6) == 1)
+			{	
+				put_one_row(mat, 6);
+				put_one_col(mat, 6);
+				put_four_row(mat, 6);
+				put_four_col(mat, 6);
 				stampa_matrice(mat, 6);
+			}	
 			else
-			{
-				stampa_matrice(mat, 6);
 				stampa_stringa("Error!");
-			}
 		}
 	}	
 	return (0);
