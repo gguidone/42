@@ -6,7 +6,7 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 12:13:59 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/12 17:15:18 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/12 17:20:08 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,8 @@ void stampa_matrice(char **mat, int lato)
 		while ( i < lato)
 		{
 			ft_putchar(mat[j][i]);
-			ft_putchar(' ');
+			if (i != 5)
+				ft_putchar(' ');
 			i++;
 		}
 		ft_putchar('\n');
