@@ -6,7 +6,7 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 12:13:59 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/12 17:20:08 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/12 18:42:52 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,22 @@ void put_string(char **mat, char *str)
 	}
 }
 
+int check_error(char **mat, int lato)
+{
+	int	i;
+
+	i = 1;
+	while (i + 1  < lato)
+	{
+		if (mat[i][0] == mat[i][5] && mat[i][0] != 50)
+			return (0);
+		if (mat[0][i] == mat[5][i] && mat [0][i] != 50)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	int	flag;
@@ -171,7 +187,13 @@ int	main(int argc, char **argv)
 		   	mat = crea_matrice(mat, 6);
 			riempi_matrice(mat, 6);
 			put_string(mat, str);
-			stampa_matrice(mat, 6);
+			if (check_error(mat, 6) == 1)
+				stampa_matrice(mat, 6);
+			else
+			{
+				stampa_matrice(mat, 6);
+				stampa_stringa("Error!");
+			}
 		}
 	}	
 	return (0);
