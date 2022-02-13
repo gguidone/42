@@ -91,27 +91,6 @@ char  **crea_matrice(char **mat, int lato)
 	return (mat);
 }
 
-char  ***crea_matrice_temp(char ***temp, int lato)
-{
-	temp = (char ***) malloc(lato * sizeof(char **));
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (i < lato)
-	{
-		temp[i] = (char **) malloc(lato * sizeof(char *));
-		while (j < lato)
-		{
-			temp[i][j] = (char *) malloc(3);
-			j++;
-		}
-		i++;
-	}
-	return (temp);
-}
-
 void riempi_matrice(char **mat, int lato)
 {
 	int	i;
@@ -393,13 +372,84 @@ int	check_num_are_diff_riga(char ** mat, int lato)
 {
 	int	i;
 	int j;
+	int z;
 
 	j = 1;
 	i = 1;
-
-
+	while ( j + 2 < lato)
+{
+	i = 1;
+	while ( i + 2 < lato)
+	{
+		z = i + 1;
+		while ( z + 1 < lato)
+		{
+				if ((mat[j][i] == mat[j][z]) && mat[j][i] != 48)
+					return(0);
+				z++;
+		}
+		i++;
+	}
+	j++;
+}
 	return(1);
 }
+
+int	check_num_are_diff_colonna(char ** mat, int lato)
+{
+	int	i;
+	int j;
+	int z;
+
+	j = 1;
+	i = 1;
+	while ( j + 1 < lato)
+{
+	i = 1;
+	while ( i + 1 < lato)
+	{
+		z = i + 1;
+		while ( z + 1 < lato)
+		{
+				if (mat[i][j] == mat[z][j] && mat[i][j] != 48)
+					return(0);
+					z++;
+		}
+		i++;
+	}
+	j++;
+}
+	return(1);
+}
+
+void copy_four(char **mat, char **temp, int lato)
+{
+	int	i;
+	int j;	
+
+	j = 1;
+	i = 1;
+	while ( j + 1 < lato)
+	{
+		i = 1;
+		while ( i + 1 < lato)
+		{
+			if (mat[j][i] == 52)
+				temp[j - 1][i - 1] = 52;	
+			else 
+				temp[j - 1][i - 1] = 48;				
+			i++;
+		}
+		j++;
+	}
+}
+
+/*void try_perm(char **mat, char **temp)
+{
+	char c[6][4] = {"123", "132", "213", "231", "312", "321"};
+	int	i;
+	int j;
+}*/
 
 int	main(int argc, char **argv)
 {
@@ -414,7 +464,9 @@ int	main(int argc, char **argv)
 			char str[17]; 
 			get_string(argv[1], str);
 			char **mat = NULL;
+			char **temp = NULL;
 		 mat = crea_matrice(mat, 6);
+			temp = crea_matrice(temp, 4);
 			riempi_matrice(mat, 6);
 			put_string(mat, str);
 			if (check_error(mat, 6) == 1 && check_error_2(mat, 6) == 1 && check_error_3(mat, 6) == 1)
@@ -426,6 +478,8 @@ int	main(int argc, char **argv)
 				put_four_middle(mat, 6);
 				put_tre(mat, 6);
 				stampa_matrice(mat, 6);
+				//copy_four(mat, temp, 6);
+				//stampa_matrice(temp, 4);				
 			}	
 			else
 				stampa_stringa("Error!");
