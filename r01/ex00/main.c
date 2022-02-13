@@ -91,6 +91,27 @@ char  **crea_matrice(char **mat, int lato)
 	return (mat);
 }
 
+char  ***crea_matrice_temp(char ***temp, int lato)
+{
+	temp = (char ***) malloc(lato * sizeof(char **));
+	int	i;
+	int	j;
+
+	j = 0;
+	i = 0;
+	while (i < lato)
+	{
+		temp[i] = (char **) malloc(lato * sizeof(char *));
+		while (j < lato)
+		{
+			temp[i][j] = (char *) malloc(3);
+			j++;
+		}
+		i++;
+	}
+	return (temp);
+}
+
 void riempi_matrice(char **mat, int lato)
 {
 	int	i;
@@ -165,6 +186,26 @@ int check_error(char **mat, int lato)
 		if (mat[i][0] == mat[i][5] && mat[i][0] != 50)
 			return (0);
 		if (mat[0][i] == mat[5][i] && mat [0][i] != 50)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int check_error_3(char **mat, int lato)
+{
+	int	i;
+
+	i = 1;
+	while (i + 1  < lato)
+	{
+		if ((mat[i][0] == 50 && mat[i][5] == 52) || (mat[i][0] == 52 && mat[i][5] == 50))
+			return (0);
+		if ((mat[i][0] == 51 && mat[i][5] == 52) || (mat[i][0] == 52 && mat[i][5] == 51))
+			return (0);
+		if ((mat[0][i] == 50 && mat[5][i] == 52) || (mat[0][i] == 52 && mat[5][i] == 50))
+			return (0);
+		if ((mat[0][i] == 51 && mat[5][i] == 52) || (mat[0][i] == 52 && mat[5][i] == 51))
 			return (0);
 		i++;
 	}
@@ -348,6 +389,18 @@ void put_tre(char **mat, int lato)
 	}
 }
 
+int	check_num_are_diff_riga(char ** mat, int lato)
+{
+	int	i;
+	int j;
+
+	j = 1;
+	i = 1;
+
+
+	return(1);
+}
+
 int	main(int argc, char **argv)
 {
 	int	flag;
@@ -364,7 +417,7 @@ int	main(int argc, char **argv)
 		 mat = crea_matrice(mat, 6);
 			riempi_matrice(mat, 6);
 			put_string(mat, str);
-			if (check_error(mat, 6) == 1 && check_error_2(mat, 6) == 1)
+			if (check_error(mat, 6) == 1 && check_error_2(mat, 6) == 1 && check_error_3(mat, 6) == 1)
 			{	
 				put_one_row(mat, 6);
 				put_one_col(mat, 6);
