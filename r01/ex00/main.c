@@ -6,7 +6,7 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 12:13:59 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/12 19:57:57 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/13 11:47:18 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,18 @@ void put_four_row(char **mat, int lato)
 	}	   
 }
 
+void riempi_con_scala(char **mat, int i, int j, int lato, char num)
+{
+			while (j + 1 < lato)
+			{
+				mat[i][j] = num;
+				num++;
+				j++;
+				if (num == 53)
+					num = 49;
+			}
+}
+
 void put_one_row(char **mat, int lato)
 {
 	int	i;
@@ -202,41 +214,13 @@ void put_one_row(char **mat, int lato)
 	while (i + 1 <  lato)
 	{
 		if (mat[i][0] == 52)
-			while (j + 1 < lato)
-			{
-				mat[i][j] = num;
-				num++;
-				j++;
-				if (num == 53)
-					num = 49;
-			}
+			riempi_con_scala(mat, i, j, 6, num);
 		if (mat[i][lato - 1] == 52)
-			while (j + 1 < lato)
-			{
-				mat[i][j] = num;
-				num++;
-				j++;
-				if (num == 53)
-					num = 49;
-			}	
+			riempi_con_scala(mat, i, j, 6, num);
 		if (mat[0][i] == 52)
-			while (j + 1 < lato)
-			{
-				mat[i][j] = num;
-				num++;
-				j++;
-				if (num == 53)
-					num = 49;
-			}	
+			riempi_con_scala(mat, i, j, 6, num);
 		if (mat[lato - 1][i] == 52)
-			while (j + 1 < lato)
-			{
-				mat[i][j] = num;
-				num++;
-				j++;
-				if (num == 53)
-					num = 49;
-			}   	
+			riempi_con_scala(mat, i, j, 6, num);
 		i++;
 	}	   
 }
@@ -258,6 +242,31 @@ void put_four_col(char **mat, int lato)
 			mat[i][lato - 2] = 52;
 	   i++;
 	}	   
+}
+
+void put_four_middle(char **mat, int lato)
+{
+	int i;
+
+	i = 1;
+	while (i + 1 < lato)
+	{
+		if ((mat[0][i] == 50 && mat[lato - 1][i] == 51) || (mat[0][i] == 51 && mat[lato - 1][i] == 50))
+		{
+			if (mat[0][i] == 50)
+				mat[2][i] = 52;
+			else if (mat[0][i] == 51)
+				mat[3][i] = 52;
+		}
+		if ((mat[i][0] == 50 && mat[i][lato - 1] == 51) || (mat[i][0] == 51 && mat[i][lato - 1] == 50))
+		{
+			if (mat[i][0] == 50)
+				mat[i][2] = 52;
+			else if (mat[i][0] == 51)
+				mat[i][3] = 52;
+		}		
+		i++;
+	}
 }
 
 void put_one_col(char **mat, int lato)
@@ -324,6 +333,21 @@ int check_error_2(char **mat, int lato)
 	return (1);
 }
 
+void put_tre(char **mat, int lato)
+{
+	int	i;
+
+	i = 1;
+	while (i + 1 < lato)
+	{
+		if (mat[0][i] == 49  && mat[5][i] == 50)
+		   mat[4][i] = 51;
+		if (mat[i][0] == 49 && mat[i][5] == 50)
+			mat[i][4] = 51;	
+		i++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	int	flag;
@@ -337,7 +361,7 @@ int	main(int argc, char **argv)
 			char str[17]; 
 			get_string(argv[1], str);
 			char **mat = NULL;
-		   	mat = crea_matrice(mat, 6);
+		 mat = crea_matrice(mat, 6);
 			riempi_matrice(mat, 6);
 			put_string(mat, str);
 			if (check_error(mat, 6) == 1 && check_error_2(mat, 6) == 1)
@@ -346,6 +370,8 @@ int	main(int argc, char **argv)
 				put_one_col(mat, 6);
 				put_four_row(mat, 6);
 				put_four_col(mat, 6);
+				put_four_middle(mat, 6);
+				put_tre(mat, 6);
 				stampa_matrice(mat, 6);
 			}	
 			else
