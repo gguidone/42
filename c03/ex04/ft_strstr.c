@@ -15,35 +15,31 @@ int	len(char *str)
 	int	cont;
 
 	cont = 0;
-	while (*str)
+	while (str[cont] != '\0')
 		cont++;
 	return (cont);
 }
 
 char	*ft_strstr(char *str, char *to_find)
 {
-	char	*temp;
 	int		cont;
+	int		i;
 	int		target;
 
-	temp = str;
+	i = 0;
 	cont = 0;
 	target = len(to_find);
-	while (*str)
+	if (target == 0)
+		return (0);
+	while (str[i] != '\0')
 	{
-		if (*str == *to_find)
-		{
-			to_find++;
+		if (str[i] == to_find[cont])
 			cont++;
-		}
 		else
-		{
-			to_find = to_find - cont;
 			cont = 0;
-		}
 		if (cont == target)
-			return (str - target);
-		str++;
+			return (&str[i]);
+		i++;
 	}
 	return (str);
 }
