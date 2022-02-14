@@ -12,17 +12,14 @@
 
 char	*ft_strupcase(char *str)
 {
-	char *temp;
-	int	cont;
+	char	*temp;
 
 	temp = str;
-	cont = 0;
 	while (*str != '\0')
 	{
 		if (*str >= 'a' && *str <= 'z')
 			*str = *str - 32;
 		str++;
-		cont++;
 	}
 	return (temp);
 }

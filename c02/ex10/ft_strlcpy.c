@@ -16,21 +16,15 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 
 	cont = 0;
 	if (size > 0)
-		while (*src != '\0')
+	{	
+		while (src[cont] != '\0' && cont < size - 1)
 		{
-			if (cont < size - 1)
-				*dest = *src;
-			else if (cont == size - 1)
-				*dest = '\0';
-			cont++;
-			src++;
-			dest++;
-		}
-	else 
-		while (*src)
-		{
-			src++;
+			dest[cont] = src[cont];
 			cont++;
 		}
+		dest[cont] = '\0';
+	}
+	while (src[cont] != '\0')
+		cont++;
 	return (cont);
 }

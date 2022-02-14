@@ -13,20 +13,23 @@
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
 	char	*temp;
+	int		flag;
 
+	flag = 0;
 	temp = dest;
 	while (n)
 	{
-		if (*src != 0)
+		if (*src != 0 && !flag)
 		{
 			*temp = *src;
 			src ++;
 		}
 		else
+			flag = 1;
+		if (flag)
 			*temp = '\0';
 		temp++;
 		n--;
 	}
-	
 	return (dest);
 }

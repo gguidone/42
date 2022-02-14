@@ -12,16 +12,13 @@
 
 char	*ft_strlowcase(char *str)
 {
-	char *temp;
-	int	cont;
+	char	*temp;
 
 	temp = str;
-	cont = 0;
 	while (*str != '\0')
 	{
 		if (*str >= 'A' && *str <= 'Z')
 			*str = *str + 32;
-		cont++;
 		str++;
 	}
 	return (temp);

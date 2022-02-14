@@ -9,7 +9,7 @@
 /*   Updated: 2022/02/09 18:17:41 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
 char	*ft_strcpy(char *dest, char *src)
 {
 	char	*temp;
@@ -23,12 +23,4 @@ char	*ft_strcpy(char *dest, char *src)
 	}
 	*dest = *src;
 	return (temp);
-}
-int main()
-{
-	char c[5] = "ciao";
-	char d[5];
-	ft_strcpy(d,c);
-	printf("%s",d);
-	return 0;
 }
