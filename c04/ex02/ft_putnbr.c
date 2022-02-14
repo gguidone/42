@@ -12,36 +12,30 @@
 
 #include <unistd.h>
 
-void	print(char c)
-{
-	write(1, &c, 1);
-}
-
 void	ft_putnbr(int nb)
 {
 	int	n;
 
 	if (nb == -2147483648)
 	{
-		print('-');
-		print('2');
-		nb = 1474836647;
+		ft_putnbr(nb / 10);
+		write(1, "8", 1);
 	}
-	if (nb < 0)
+	else if (nb < 0)
 	{
-		print('-');
-		nb = -nb;
+		nb = nb * -1;
+		write(1, "-", 1);
 		ft_putnbr(nb);
 	}
 	else if (nb > 9)
 	{
 		ft_putnbr(nb / 10);
 		n = (nb % 10) + 48;
-		print(n);
+		write(1, &n, 1);
 	}
 	else
 	{
-		n = (nb / 10) + 48;
-		print(n);
+		n = nb + 48;
+		write(1, &n, 1);
 	}
-}	
+}
