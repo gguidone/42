@@ -6,16 +6,16 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:30:27 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/15 16:55:42 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/15 18:50:14 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	while (n-- && (*s1 || *s2)
+	while (n-- && (*s1 || *s2))
 	{
 		if (*s1 != *s2)
-			return (*(unsigned char *)s1 - *(unsigned char*)s2);
+			return (*(unsigned char *)s1 - *(unsigned char *)s2);
 		s1++;
 		s2++;
 	}
