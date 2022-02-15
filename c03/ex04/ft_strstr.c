@@ -30,7 +30,7 @@ char	*ft_strstr(char *str, char *to_find)
 	cont = 0;
 	target = len(to_find);
 	if (target == 0)
-		return (0);
+		return (str);
 	while (str[i] != '\0')
 	{
 		if (str[i] == to_find[cont])
@@ -38,8 +38,8 @@ char	*ft_strstr(char *str, char *to_find)
 		else
 			cont = 0;
 		if (cont == target)
-			return (&str[i]);
+			return (&str[i - cont + 1]);
 		i++;
 	}
-	return (str);
+	return (0);
 }
