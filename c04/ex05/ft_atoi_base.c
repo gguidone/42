@@ -6,7 +6,7 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 10:35:16 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/14 22:13:02 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/15 13:44:52 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -96,7 +96,8 @@ int	ft_atoi_base(char *str, char *base)
 	sign = 1;
 	cont = lastnum_pos(str, p, base);
 	result = 0;
-	while (str[cont] != '-' && str[cont] != '+' && str[cont] != ' ' && cont != 0)
+	while (str[cont] != '-' && str[cont] != '+'
+		&& str[cont] != ' ' && cont != 0)
 	{
 		result = result + ((search_num(str[cont], base)) * mult);
 		mult = mult * ft_strlen(base);
