@@ -52,7 +52,8 @@ int	lastnum_pos(char *str, int *sign, char *base)
 	}
 	while (search_num(str[cont], base) != 0)
 		cont++;
-	cont--;
+	if (cont != 0)
+		cont--;
 	return (cont);
 }
 
@@ -95,7 +96,7 @@ int	ft_atoi_base(char *str, char *base)
 	sign = 1;
 	cont = lastnum_pos(str, p, base);
 	result = 0;
-	while (str[cont] != '-' && str[cont] != '+')
+	while (str[cont] != '-' && str[cont] != '+' && str[cont] != ' ' && cont != 0)
 	{
 		result = result + ((search_num(str[cont], base)) * mult);
 		mult = mult * ft_strlen(base);

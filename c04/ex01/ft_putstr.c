@@ -6,17 +6,25 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 10:37:22 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/10 10:38:39 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/15 11:05:17 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
 void	ft_putstr(char *str)
 {
-	while (*str)
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
 	{
-		write(1, &str, 1);
-		str++;
+		ft_putchar(str[i]);
+		i++;
 	}
 }

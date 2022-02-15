@@ -6,10 +6,11 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 10:54:13 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/10 13:12:28 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/15 11:04:19 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <stdio.h>
+#include <stdlib.h>
 int	lastnum_pos(char *str)
 {
 	int	cont;
@@ -21,7 +22,8 @@ int	lastnum_pos(char *str)
 		cont++;
 	while (str[cont] >= '0' && str[cont] <= '9')
 		cont++;
-	cont--;
+	if (cont != 0)
+		cont--; 
 	return (cont);
 }
 
@@ -39,7 +41,7 @@ int	det_sign(char *str)
 		str++;
 	}
 	return (sign);
-}
+} 
 
 int	ft_atoi(char *str)
 {
@@ -52,7 +54,7 @@ int	ft_atoi(char *str)
 	cont = lastnum_pos(str);
 	result = 0;
 	sign = det_sign(str);
-	while (str[cont] != '-' && str[cont] != '+')
+	while (str[cont] != '-' && str[cont] != '+' && str[cont] != ' ' && cont != 0)
 	{
 		result = result + ((str[cont] - 48) * mult);
 		mult = mult * 10;
@@ -60,4 +62,10 @@ int	ft_atoi(char *str)
 	}
 	result = sign * result;
 	return (result);
+}
+int main()
+{
+	printf("%d", ft_atoi("     101010"));
+return 0;
+
 }
