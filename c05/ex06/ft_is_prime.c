@@ -6,25 +6,22 @@
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:12:05 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/15 17:30:02 by gguidone         ###   ########.fr       */
+/*   Updated: 2022/02/17 10:50:37 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	search_prime(int nb, int div)
-{
-	if (nb < 0)
-		nb = -nb;
-	if (nb == 0 || nb == 1)
-		return (0);
-	if (nb == div)
-		return (1);
-	else if (nb % div == 0)
-		return (0);
-	else
-		return (search_prime(nb, div + 1));
-}
-
 int	ft_is_prime(int nb)
 {
-	return (search_prime(nb, 2));
+	int	i;
+
+	i = 2;
+	if (nb == 0 || nb == 1)
+		return (0);
+	while (i <= nb / 2)
+	{
+		if (nb % i == 0)
+			return (0);
+		i++;
+	}
+	return (1);
 }
