@@ -1,0 +1,1 @@
+#define ABS(Value) return (x > 0 ? x : -x)

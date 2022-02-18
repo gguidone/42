@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 17:34:09 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/17 11:33:40 by gguidone         ###   ########.fr       */
+/*   Created: 2022/02/17 15:10:35 by gguidone          #+#    #+#             */
+/*   Updated: 2022/02/17 16:00:30 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	recsqrt(int nb, int square)
-{
-	int	n;
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
 
-	n = square * square;
-	if (nb > 2147395600)
-		return (0);
-	if (n == nb)
-		return (square);
-	else if (n > nb)
-		return (0);
-	else
-		return (recsqrt(nb, square + 1));
+#include <unistd.h>
+typedef int t_bool;
+
+int EVEN(int nb)
+{
+ if(nb % 2 == 0)
+  return (1);
+ return (0);
 }
 
-int	ft_sqrt(int nb)
-{
-	int	sqrt;
+int SUCCESS = 0;
+char ODD_MSG[35] = "I have an odd number of arguments.\n";
+char EVEN_MSG[37] = "I have an even number of arguments.\n";
+int TRUE = 1;
+int FALSE = 0;
 
-	sqrt = recsqrt(nb, 1);
-	return (sqrt);
-}
+#endif

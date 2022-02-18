@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gguidone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 17:34:09 by gguidone          #+#    #+#             */
-/*   Updated: 2022/02/17 11:33:40 by gguidone         ###   ########.fr       */
+/*   Created: 2022/02/17 15:09:19 by gguidone          #+#    #+#             */
+/*   Updated: 2022/02/17 15:10:13 by gguidone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	recsqrt(int nb, int square)
-{
-	int	n;
+#ifndef ft.h
+#define ft.h
 
-	n = square * square;
-	if (nb > 2147395600)
-		return (0);
-	if (n == nb)
-		return (square);
-	else if (n > nb)
-		return (0);
-	else
-		return (recsqrt(nb, square + 1));
-}
+void ft_putchar(char c);
+void ft_swap(int *a, int *b);
+void ft_putstr(char *str);
+int ft_strlen(char *str);
+int ft_strcmp(char *s1, char *s2);
 
-int	ft_sqrt(int nb)
-{
-	int	sqrt;
-
-	sqrt = recsqrt(nb, 1);
-	return (sqrt);
-}
+#endif
