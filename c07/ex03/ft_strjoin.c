@@ -58,8 +58,9 @@ char *ft_strcat(char *dest, char *src)
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	char *str;
+	int i;
 
-
+	i = 0;
 	if (size == 0)
 	{
 		str = malloc(0);
@@ -67,10 +68,10 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	}
 	if (!(str = malloc(ft_tot_len(size, strs, sep))))
 		return (0);
-	str = malloc(ft_tot_len(size, strs, sep)
+	str = malloc(ft_tot_len(size, strs, sep));
 	while (i < size - 1)
 	{
-		str = ft_strcat(str, srts[i]);
+		str = ft_strcat(str, strs[i]);
 		str = ft_strcat(str, sep);
 		i++;
 	}

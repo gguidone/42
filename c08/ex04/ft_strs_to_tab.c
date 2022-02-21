@@ -1,6 +1,5 @@
 #include <stdlib.h>
-#include "smystruct.h"
-#include <stdio.h>
+#include "ft_stock_str.h"
 
 int ft_strlen(char *str)
 {
@@ -28,17 +27,16 @@ char *ft_strcpy(char *dest, char *src)
 
 struct s_stock_str *ft_strs_to_tab(int ac, char **av)
 {
-	t_stock_str *arr = malloc(sizeof(t_stock_str) * ac);
-	int i = 0;
+	int length;
+	t_stock_str *node;
+	t_stock_str *arr = malloc(sizeof(t_stock_str) * (ac + 1));
+	int i;
+
+	i = 0;
 	while (i < ac)
 	{
-		int length = ft_strlen(av[i]);
-		// t_stock_str node;
-		// node.size = length;
-		// node.str = malloc(length + 1);
-		// node.copy = malloc(length + 1);
-		t_stock_str *node = malloc(sizeof(t_stock_str));
-		// (*node).size
+		length = ft_strlen(av[i]);
+		node = malloc(sizeof(t_stock_str));
 		node->size = length;
 		node->str = malloc(length + 1);
 		node->copy = malloc(length + 1);
@@ -47,10 +45,12 @@ struct s_stock_str *ft_strs_to_tab(int ac, char **av)
 		arr[i] = *node;
 		i++;
 	}
+	node = malloc(sizeof(t_stock_str));
+	node->size = 1;
+	node->str = malloc(1);
+	node->copy = malloc(1);
+	node->str[0] = '\0';
+	node->copy[0] = '\0';
+	arr[i] = *node;
 	return arr;
-}
-
-int main(int argc, char **argv)
-{
-	printf("%s\n", ft_strs_to_tab(argc, argv)[1].copy);
 }
